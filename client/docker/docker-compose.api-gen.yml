@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  openapi-gen:
+    image: openapitools/openapi-generator-cli
+    volumes:
+      - ../..:/study_react
+    command: generate -g typescript-fetch -i /study_react/server/rest-api-specification/openapi.yaml -o /study_react/client/src/backend/generated-rest-client --additional-properties supportsES6=true,typescriptThreePlus=true
