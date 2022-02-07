@@ -36,3 +36,4 @@ yarn dev         \\\APIサーバーが起動
 cd client
 yarn dev でWebサーバーが起動
 ```
+http://localhost:3000 に接続
