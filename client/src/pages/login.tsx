@@ -1,11 +1,11 @@
 import NavigationHeader from "../components/NavigationHeader";
-import Welcome from "../components/Welcome";
+import Login from "../components/Login";
 
-export default function Home () {
+export default function login () {
   return(
     <>
     <NavigationHeader />
-    <Welcome />
+    <Login />
     </>
   );
 }

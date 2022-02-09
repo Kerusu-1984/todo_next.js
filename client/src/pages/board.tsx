@@ -1,11 +1,11 @@
 import NavigationHeader from "../components/NavigationHeader";
-import Welcome from "../components/Welcome";
+import TodoBoard from "../components/TodoBoard";
 
-export default function Home () {
+export default function Todo () {
   return(
     <>
     <NavigationHeader />
-    <Welcome />
+    <TodoBoard />
     </>
   );
 }
