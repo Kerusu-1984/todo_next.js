@@ -1,7 +1,8 @@
+import React from 'react';
 import styles from '../styles/NavigationHeader.module.css';
 import Link from 'next/link';
 
-export default function NavigationHeader() {
+export const NavigationHeader: React.FC = () => {
   const logout = async () =>{
     window.location.href = "/";
   };

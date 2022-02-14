@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "../styles/TodoForm.module.css";
 import { BackendService } from "../backend/BackendService";
 import { useInput } from "../hooks/useInput";
@@ -12,7 +13,7 @@ type Props = {
   addTodo: (todo: Todo) => void
 }
 
-export default function({ addTodo }) {
+export const TodoForm:React.FC<Props> = ({ addTodo }) => {
   const [text, textAttributes, setText] = useInput('');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

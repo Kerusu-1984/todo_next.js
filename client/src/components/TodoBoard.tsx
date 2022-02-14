@@ -1,8 +1,8 @@
 import styles from "../styles/TodoBoard.module.css"
-import TodoForm from "./TodoForm";
+import { TodoForm } from "./TodoForm";
 import { FilterType } from "./TodoFilter";
-import TodoFilter from "./TodoFilter";
-import TodoList from "./TodoList";
+import { TodoFilter } from "./TodoFilter";
+import { TodoList } from "./TodoList";
 import React, { useEffect, useState } from 'react';
 import { BackendService } from '../backend/BackendService';
 
@@ -23,7 +23,7 @@ const showFilter: ShowFilter = {
 };
 
 
-export default function TodoBoard() {
+export const TodoBoard:React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filterType, setFilterType] = useState<FilterType>('ALL');
 

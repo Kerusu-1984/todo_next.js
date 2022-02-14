@@ -1,8 +1,9 @@
+import React from "react";
 import styles from "../styles/Login.module.css"
 import { useCallback, useEffect } from 'react';
 import Router from "next/router";
 
-export default function Login() {
+export  const Login: React.FC = () => {
     const login = useCallback(e => {
         e.preventDefault();
         Router.push("/board")
@@ -20,7 +21,7 @@ export default function Login() {
             </div>
             <form className={styles.Login_form} onSubmit={login}>
             <div className={styles.Login_item}>
-              <div className={styles.Login_label}>名前</div>
+              <div className={styles.Login_label}>メールアドレス</div>
               <input type="text" />
             </div>
             <div className={styles.Login_item}>

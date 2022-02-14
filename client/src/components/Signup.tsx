@@ -1,8 +1,9 @@
+import React from "react";
 import styles from "../styles/Signup.module.css"
 import Router from "next/router"
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
-export default function Signup() {
+export const Signup:React.FC = () => {
     const signup = useCallback(e => {
         e.preventDefault();
         Router.push("/")
@@ -16,6 +17,10 @@ export default function Signup() {
           <h1>ユーザー登録</h1>
         </div>
         <form className={styles.Signup_form} onSubmit={signup}>
+        <div className={styles.Signup_item}>
+          <div className={styles.Signup_label}>メールアドレス</div>
+          <input type="text"/>
+        </div>
         <div className={styles.Signup_item}>
           <div className={styles.Signup_label}>名前</div>
           <input type="text"/>

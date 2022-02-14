@@ -1,7 +1,8 @@
+import React from "react";
 import styles from "../styles/Welcome.module.css"
 import Link from "next/link";
 
-export default function Welcome() {
+export const Welcome:React.FC =() => {
     return(
     <div className={styles.Welcome_content}>
       <div>

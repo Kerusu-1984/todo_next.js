@@ -1,8 +1,14 @@
+import React from "react";
 import styles from "../styles/TodoFilter.module.css"
 
 export type FilterType = 'ALL' | 'INCOMPLETE' | 'COMPLETED';
 
-export default function TodoFilter({filterType, setFilterType}) {
+type Props = {
+  filterType: FilterType
+  setFilterType: (filter: FilterType) => void
+}
+
+export const TodoFilter:React.FC<Props> = ({filterType, setFilterType}) => {
   return (
     <div className={styles.TodoFilter_content}>
       <button className={filterType === 'ALL' ? styles.TodoFilter_buttonSelected : styles.TodoFilter_buttonUnselected}

@@ -1,3 +1,4 @@
+import React from "react"
 import styles from "../styles/TodoItem.module.css"
 
 type Props = {
@@ -5,9 +6,10 @@ type Props = {
   text: string
   completed: boolean
   toggleTodoCompletion: (id: number) => void
+  deleteTodo: (id:number) => void
 }
 
-  export default function TodoItem({id, text, completed, toggleTodoCompletion,deleteTodo}){
+  export const TodoItem:React.FC<Props> = ({id, text, completed, toggleTodoCompletion,deleteTodo}) => {
     return (
       <li className={styles.TodoItem_item}>
         <div className={styles.TodoItem_todo}>
