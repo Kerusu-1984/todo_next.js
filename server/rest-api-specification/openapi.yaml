@@ -140,7 +140,102 @@ paths:
           description: No Content
         '403':
           description: Forbidden
-  /csrf_token:
+  /api/signup:
+    post:
+      summary: アカウントの登録
+      description: >
+        ToDoアプリを利用するのに必要となるユーザーアカウントを登録する。
+        **メールアドレス**は識別できるように一意である必要がある。
+      tags:
+        - users
+      operationId: signup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ユーザー名
+                password:
+                  type: string
+                  description: パスワード
+                email:
+                  type: string
+                  description: メールアドレス
+              required:
+                - name
+                - password
+                - email
+              additionalProperties: false
+            examples:
+              example:
+                value:
+                  name: test1
+                  password: password
+                  email:    test@ex.com
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '409':
+          description: Conflict
+  /api/login:
+    post:
+      summary: ログイン
+      description: >
+        ユーザー情報で認証を行い、認証に成功した場合はログインする。
+        一部のREST APIを利用するためには、このREST APIを利用して事前にログインしておく必要がある。
+        ログイン状態は、ログアウトするREST APIを呼び出すか、一定時間が経過するまで継続する。
+      tags:
+        - users
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: メールアドレス
+                password:
+                  type: string
+                  description: パスワード
+              required:
+                - email
+                - password
+              additionalProperties: false
+            examples:
+              example:
+                value:
+                  name: email
+                  password: password
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+  /api/logout:
+    post:
+      summary: ログアウト
+      description: >
+        ログイン中である場合、ログアウトする。
+      tags:
+        - users
+      operationId: logout
+      responses:
+        '204':
+          description: No Content
+        '403':
+          description: Forbidden
+  /api/csrf_token:
     get:
       summary: CSRFトークンの取得
       description: >
