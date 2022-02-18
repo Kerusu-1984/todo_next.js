@@ -90,6 +90,7 @@ export class TodosApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
+
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TodoFromJSON));
     }
 

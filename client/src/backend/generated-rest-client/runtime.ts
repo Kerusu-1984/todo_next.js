@@ -289,11 +289,10 @@ export interface ResponseTransformer<T> {
 
 export class JSONApiResponse<T> {
     constructor(public raw: Response, private transformer: ResponseTransformer<T> = (jsonValue: any) => jsonValue) {}
-    
+
     async value(): Promise<T> {
         return this.transformer(await this.raw.json());
     }
-    
 }
 
 export class VoidApiResponse {

@@ -5,7 +5,10 @@ apis/index.ts
 index.ts
 models/InlineObject.ts
 models/InlineObject1.ts
+models/InlineObject2.ts
+models/InlineObject3.ts
 models/InlineResponse200.ts
 models/Todo.ts
+models/User.ts
 models/index.ts
 runtime.ts

@@ -5,6 +5,9 @@ import { TodoFilter } from "./TodoFilter";
 import { TodoList } from "./TodoList";
 import React, { useEffect, useState } from 'react';
 import { BackendService } from '../backend/BackendService';
+import Router from "next/router";
+import { useRecoilState } from "recoil" 
+import { nameState,isLoggedInState } from  "./atoms"
 
 type Todo = {
     id: number
@@ -26,10 +29,17 @@ const showFilter: ShowFilter = {
 export const TodoBoard:React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filterType, setFilterType] = useState<FilterType>('ALL');
+  const [isLoggedIn] = useRecoilState(isLoggedInState)
+
 
   useEffect(() => {
-    BackendService.getTodos()
-      .then(response => setTodos(response));
+    if (isLoggedIn){
+      BackendService.getTodos()
+      .then(response => {console.log(response);setTodos(response);});
+    }else{
+      Router.push("/") //ログインせずに直に飛んできたときの処理、404を表示した方がよい？
+    }
+
   }, []);
 
   const addTodo = (todo: Todo) => {
