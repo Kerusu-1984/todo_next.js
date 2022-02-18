@@ -10,9 +10,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int    @id @default(autoincrement())
+  email     String @unique
+  name      String
+  password  String
+  task      Task[]
+}
 
 model Task {
-  id           Int @id @default(autoincrement())
+  id           Int     @id @default(autoincrement())
   text         String
   completed    Boolean @default(false)
+  user         User @relation(fields: [user_id], references: [id])
+  user_id      Int
+}
+
+model Session {
+  sid        String @id
+  sess       Json
+  expire     DateTime
 }
