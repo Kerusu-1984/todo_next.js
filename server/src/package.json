@@ -22,7 +22,7 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:seed": "prisma db seed",
-    "prisma:dev": "run-s -l prisma:generate prisma:migrate prisma:seed"
+    "prisma:dev": "run-s -l prisma:migrate prisma:generate prisma:seed"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
