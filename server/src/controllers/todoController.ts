@@ -6,8 +6,9 @@ const router = Router();
 
 router.get("/",async (req: Request, res: Response) => {
     const todos = await prisma.task.findMany({
-        where: { id:req!.session!.user_id }
+        where: { user_id:req!.session!.user_id }
     });
+    console.log(todos)
     res.json( todos );
 });
 
@@ -20,8 +21,10 @@ router.get("/:id", async (req: Request, res: Response) =>{
 
 router.post("/",async (req:Request, res: Response) => {
     const { text } = req.body;
+    console.log(req!.session!.user_id)
+    const user_id = req.session.user_id ? req.session.user_id:0
     const task = await prisma.task.create({
-        data: { text:text, completed:false, user_id:req!.session!.user_id=3 }
+        data: { text:text, completed:false, user_id:user_id }
     });
     res.json( task );
 });

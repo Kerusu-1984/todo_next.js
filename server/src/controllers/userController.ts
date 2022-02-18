@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { PrismaClient,Prisma } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 
 const router = Router();
@@ -33,13 +33,13 @@ router.post('/login', async(req, res) => {
       return;
     }
       req!.session!.user_id = User.id;
-      res.json({user_id:req!.session!.user_id})
+      res.json({name:User.name})
     
   });
 
-router.get('/logout', (req, res) => {
-    req!.session!.destroy((err) => {
-      res.redirect("/");
+  router.post('/logout', (req, res) => {
+    req!.session!.destroy(()=>{
+      res.send("logout");
     });
   });
 
