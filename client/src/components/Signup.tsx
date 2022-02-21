@@ -18,7 +18,20 @@ export const Signup: React.FC = () => {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const { email, name, password } = data;
+    try {
+      await BackendService.signup(name, password, email);
+    } catch (error) {
+      if (error.status === 409) {
+        setFormError("同じメールアドレスが登録されています");
+        return;
+      }
+      throw error;
+    }
+
+    Router.push("/");
+  };
 
   return (
     <div className={styles.Signup_content}>
