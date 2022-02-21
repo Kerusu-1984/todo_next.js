@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../styles/TodoForm.module.css";
 import { BackendService } from "../backend/BackendService";
-import { useInput } from "../hooks/useInput";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type Todo = {
@@ -22,21 +21,14 @@ export const TodoForm: React.FC<Props> = ({ addTodo }) => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+    const { text } = data;
+    BackendService.postTodo(text).then((response) => addTodo(response));
+    reset();
   };
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   if (!text) {
-  //     return;
-  //   }
-  //   BackendService.postTodo(text)
-  //     .then(response => addTodo(response));
-  //   setText('');
-  // };
 
   return (
     <div className={styles.TodoForm_content}>
